@@ -1,0 +1,652 @@
+<!doctype html>
+
+<!-- 
+Tabs to open before presentation:
+ChatGPT with clear history
+Huggingface window
+Companion website
+BBNJ chatbot
+NotebookLM
+Paper PDF
+
+Bonus: GPT store
+-->
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Slides: Designing Equitable Ocean Technology</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/simple.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+		<style>
+
+			/* ocean nexus colors: 
+
+			blues dark to light
+			#0d2142
+			#6a7a8b
+			#61737d <-- unsaturated
+			#b4bcc5
+
+
+			greys
+			#666669
+			#b3ada3
+			*/
+
+			div.exampleprompt {
+				font-size:70%;
+				text-align: left;
+			}
+
+			ol.signpost-list {
+				font-size:90%;
+			}
+
+			li.signpost-chunk {
+				border: solid 0px white;
+				background-color: #e3e8ee;
+				border-radius: 10px;
+				padding: 0.5em;
+				margin-bottom: 0.5em;
+				margin-top: 0.3em;
+			}
+
+			li.signpost-chunk.fragment.current-fragment, li.signpost-chunk.active {
+				color: white;
+				background-color: #0d2142;
+			}
+
+			li.signpost-chunk.fragment.visible::marker, li.signpost-chunk.active::marker {
+				color:black;
+			}
+
+			div.exampleprompt div.prompt {
+				color:white;
+				background-color: #0d2142;
+				padding: 1em;
+				border-top-left-radius:8px;
+				border-top-right-radius:8px;
+				border: white solid 2px;
+				border-bottom:none;
+			}
+
+			div.exampleprompt div.response {
+				padding: 1em;
+				background-color:#e4e4ec;
+			}
+
+			div.exampleprompt span.hilight {
+				background-color: #eedbba
+			}
+
+			div.promptengineeringexample {
+				margin-bottom: 1em;
+				background-color: #b4bcc5;
+				padding: 0.3em;
+				font-size:70%;
+			}
+
+			span.blue {
+				color: #0f4192;
+			}
+
+			ul.spaced li, ol.spaced li {
+				margin-top: 0.5em;
+			}
+			
+			ul.dashed {
+           list-style-type: none !important;
+         }
+         ul.dashed > li {
+           text-indent: -5px;
+         }
+         ul.dashed > li:before {
+           content: "\2014\a0";
+           text-indent: -5px;
+         }
+         
+         section.takeaway-slide h3 {
+         	color: #d7d1f0 !important;
+         }
+
+		 span.number-marker {
+			background-color:#d7d1f0;
+			color: black;
+			padding: 0 0.5em;
+			border-radius:500px;
+			font-size:70%;
+		 }
+         
+         
+         table.roadmap {
+					font-size:100%;
+					border-spacing: 1px;
+					border-collapse: collapse;
+					margin-top:1em;
+				}
+				
+				table.roadmap tr td:last-child {
+					border-top-right-radius:10px;
+					border-bottom-right-radius:10px;
+					padding-right:1em;
+				}
+				
+				table.roadmap tr td:first-child {
+					border-top-left-radius:10px;
+					border-bottom-left-radius:10px;
+					padding-left:1em;
+				}
+
+			
+				table.roadmap tr.selected td, .roadmap tr td.selected {
+					color: black !important;
+					background-color: #d7d1f0;
+				}
+				
+				
+			
+				table.roadmap td {
+					/*border: solid 10px white;*/
+					border: 0;
+
+					/*background-color: #f7f3de/*#EEE*/;
+				}
+
+				table.roadmap span.signpost {
+					font-size:70%;
+					color: black !important;
+					background-color: #d7d1f0;
+					padding: 0.2em 0.45em;
+					border-radius:100px;
+					vertical-align: 5%;
+				}
+				
+				table.roadmap tr.selected span.signpost {
+					font-size:85%;
+					color: black !important;
+					background-color: #d7d1f0;
+					padding:0;
+					/*padding-left:0.25em;*/
+					border-radius:0;
+				}
+
+				table.roadmap tr td:first-child {
+					text-align:center;
+				}
+
+
+				/*body {
+					cursor:none !important;
+				}*/
+
+				
+		</style>
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<!-- <section data-background-image="img/1.png" data-background-color="#404040" data-background-size="contain"></section> -->
+
+				<section data-background-color="#323232">
+					<img style="width:100%;height:auto" src="img/webinar-series.png"><br><br><br>
+				
+					<h3 style="color:#d7d1f0">Designing Equitable Ocean Technology</h3>
+					
+					<div style="margin-top:0.2em; font-size:70%; color:e9e6e4">Matt Ziegler <small style="vertical-align:20%"> &bull; </small> Richard Anderson <small style="vertical-align:20%"> &bull; </small> Yoshitaka Ota</div>
+					<br><br><br>
+					<div style="vertical-align:middle">
+						<img style="width:30%; height:auto; vertical-align:middle; margin-right:2em" src="img/ocean-nexus-logo-long.png">
+						<img style="width:25%; height:auto; vertical-align:middle" src="img/allenschool-logo.png">
+					</div>
+
+				</section>
+
+				
+				
+				<section data-background-color="#0d2142">
+					<h3>Emerging Ocean Technologies</h3>
+					
+					<div style="font-size:60%">
+					<div style="width:27%;vertical-align:bottom;margin:0.5em;display:inline-block" class="fragment">
+						<img style="width:100%;height:auto;margin:0" src="img/GFW-marine-manager-screenshot.png">
+						Ocean observation systems
+					</div>
+
+					<div style="width:27%;vertical-align:bottom;margin:0.5em;display:inline-block" class="fragment">
+						<img style="width:80%;height:auto;margin:0" src="img/vms-2.jpg">
+						Vessel monitoring systems
+					</div>
+
+					<div style="width:27%;vertical-align:bottom;margin:0.5em;display:inline-block" class="fragment">
+						<img style="width:100%;height:auto;margin:0" src="img/onboard-surveillance-iobserver.png">
+						Onboard video surveillance
+					</div>
+					
+					<div style="width:27%;vertical-align:bottom;margin:0.5em;display:inline-block" class="fragment">
+						<img style="width:70%;height:auto;margin:0" src="img/mockup-pescadata-1-1.png"><br>
+						Mobile apps for fishers
+					</div>
+
+					<div style="width:27%;vertical-align:bottom;margin:0.5em;display:inline-block" class="fragment">
+						<img style="width:100%;height:auto;margin:0" src="img/model-1.png">
+						Fisheries modeling
+					</div>
+					
+					
+					
+					<div style="width:27%;vertical-align:bottom;margin:0.5em;display:inline-block" class="fragment">
+						<img style="width:100%;height:auto;margin:0" src="img/blockchain-walmart-2.png">
+						Traceability tools
+					</div>
+					
+					
+					</div>
+					
+					<div style="font-size:40%;opacity:0.6;margin-top:0.3em">
+						Image credits: (1) Global Fishing Watch, (2) Satlink, (3) Juan Carlos Ovalle Macías et. al., WFC Presentation 2024 (4) CoBi PescaData, (5) Madison Heller-Shipley et. al., WFC Presentation 2024 (6) Hyperledger Foundation
+
+					</div>
+				</section>
+				
+				<section data-background-color="#000000">
+					<h3>Technology Inequities</h3>
+					<img class="stretch" src="img/global-broadband.png">
+				</section>
+
+				
+
+				<section data-background-color="#404040">
+					<h4>AI Model Biases</h4>
+					<img src="img/algorithms-of-opression.jpg" style="width:33%;height:auto;display:inline-block;margin-right:1em">
+					<div style="width:40%;display:inline-block">
+						<img src="img/computer-vision-discrimination.png" style="width:100%;height:auto;display:block">
+						<img src="img/gender-classification.webp" style="width:100%;height:auto;display:block">
+						<div style="font-size:40%;opacity:0.4">Credit: Joy Buolamwini, Reuters/Richard Lee</div>
+					</div>
+				</section>
+				
+				<section data-background-color="#000000">
+					<h4>Disproportionate Surveillance of Marginalized Groups</h4>
+
+					<div style="width:70%;display:inline-block;text-align:center;padding:0">
+						<img class="" style="display:inline-block;width:100%;height:auto;vertical-align:top" src="img/black-lives-matter-surveillance.webp">
+						<div style="font-size:40%;opacity:0.4">Credit: Amnesty International / Spencer Platt / Getty Images; The Guardian / Betsy Reed</div>
+					</div>
+					
+					<img style="width:22%;height:auto;display:inline-block;vertical-align:top;opacity:0.9" src="img/guardian-screenshot.png">
+					
+				</section>
+
+
+
+
+				<section>
+					<h4 style="margin-top:1em">How do we make sure that ocean technology is fair to everyone?</h4>
+					<img class=" fragment" data-fragment-index="1" src="img/ocean-equity-triangle.png" style="margin-top:-0.5em; width:70%;height:auto">
+					<h4 class="fragment" data-fragment-index="1">Equitable ocean technology must be anti-inequity</h4>
+					<!-- <h3>oceannexus.org</h3> -->
+				</section>
+
+<!-- takeaway slide -->
+<section data-background-color="#323232" class="takeaway-slide">
+	<h3>Designing Equitable Ocean Technology</h3>
+	
+	<table class="roadmap">
+		<tr class="fragment" data-fragment-index="1"><td><span class="signpost fragment" data-fragment-index="6">1.</span></td><td>Who has <b>decision-making power?</b></td></tr>
+		<tr class="fragment" data-fragment-index="2"><td><span class="signpost fragment" data-fragment-index="6">2.</span></td><td>Who is <b>excluded</b>?
+			<!--<br><small>Digital divide <small style="vertical-align:20%"> &bull; </small> design choices <small style="vertical-align:20%"> &bull; </small> online discrimination</small>--></td></tr>
+		<tr class="fragment" data-fragment-index="3"><td><span class="signpost fragment" data-fragment-index="6">3.</span></td><td>Who benefits from <b>model biases?</b></td></tr>
+		<tr class="fragment" data-fragment-index="4"><td></td><td>Who takes on <b>burdens and risks?</td></tr>		
+		<tr class="fragment" data-fragment-index="5"><td></td><td>Who benefits from <b>techno-optimism?</b></td></tr>
+	</table>
+</section>
+
+<!-- takeaway slide -->
+<section data-background-color="#323232" class="takeaway-slide">
+	<h3>Designing Equitable Ocean Technology</h3>
+	
+	<table class="roadmap">
+		<tr class="selected"><td><span class="signpost">1.</span></td><td>Who has <b>decision-making power?</b></td></tr>
+		<tr><td><span class="signpost">2.</span></td><td>Who is <b>excluded?</b>
+			<!--<br><small>Digital divide <small style="vertical-align:20%"> &bull; </small> design choices <small style="vertical-align:20%"> &bull; </small> online discrimination</small>--></td></tr>
+		<tr><td><span class="signpost">3.</span></td><td>Who benefits from <b>model biases?</b></td></tr>
+		<tr><td></td><td>Who takes on <b>burdens and risks?</td></tr>		
+		<tr><td></td><td>Who benefits from <b>techno-optimism?</b></td></tr>
+	</table>
+</section>
+				
+				<section>
+					<!-- <h4>1. Who has <b>decision-making power?</b></h4> -->
+					<h3>Example: Fisheries Modeling</h3>
+					
+					<div class="" style="width:85%;margin-right:auto;margin-left:auto">
+						<img src="img/model-1.png" class="" style="width:55%;height:auto;vertical-align:middle">
+						<img src="img/model-2.png" class="" style="width:40%;height:auto;vertical-align:middle">
+						<div style="font-size:35%; text-align:left; opacity:0.8" class="vanish-with-fragment-end">
+						&bull; Madison Heller-Shipley et. al. <i>Streamlining MSE: Assessing Shortcut Methods for Expedited Science Integration.</i> World Fisheries Congress Presentation 2024
+						<br>&bull; Yunzhou Li et. al. <i>Evaluating fisheries conservation strategies in the socio-ecological system: A grid-based dynamic model to link spatial conservation prioritization tools with tactical fisheries management</i>. PLOS One 2020.
+						</div>
+					</div>
+					
+					<!-- <ul class="dashed">
+						<li class="fragment">Complexity squeezes out less-powerful stakeholders</li>
+					</ul> -->
+
+				</section>
+				
+				<!-- <section data-background-gradient="linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 86%, rgba(50,50,50,1) 86%, rgba(50,50,50,1) 100%)"> -->
+				<section data-background-color="#0d2142" style="font-size:85%">
+					<h3>Example: Fisheries Modeling</h3>
+					
+					<ul class="dashed spaced" style="margin-left:3em">						
+						<li class="">Complexity squeezes out less-powerful stakeholders
+							<ul class="dashed">
+								<li style="margin-top:0">What is modeled and why?</li>
+							</ul>
+
+							<div style="width:50%;margin-left:3em">
+								<img src="img/science-management-interface.png" style="width:100%;height:auto"><br>
+								<div style="font-size:40%;opacity:0.8;line-height:1">Angela Abolhassani, Jessica Vandenberg 2024. <i>Management Procedures and the Science Management Interface in International Tuna Management</i>. Presentation at World Fisheries Congress 2024. (citing Lave 2012.)</div>
+							</div>
+						</li>
+						
+						<li class="fragment">"Participatory" modeling methods often fall short in practice
+							<ul class="dashed">
+								<li style="margin-top:0">More powerful actors still control the process</li>
+							</ul>
+						</li>
+
+						<li class="fragment">
+							<i>Partial</i> technology mitigations?<br>
+							<small style="padding-left:2em">Simpler models &nbsp;&nbsp;<small style="vertical-align:20%"> &bull; </small>&nbsp;&nbsp; better user interfaces &nbsp;&nbsp;<small style="vertical-align:20%"> &bull; </small>&nbsp;&nbsp; more interactivity</small>
+						</li>
+
+					</ul>
+				</section>
+				
+
+
+				<section data-background-color="#d9d9d9">
+					
+					<h4>Core problem: Who has Decision-Making Power?</h4>
+
+					<img class="stretch" src="img/bleaching-modeling-equity.png">
+					<div style="font-size:40%;opacity:0.6;line-height:1;width:60%;margin-right:auto;margin-left:auto">González-Espinosa, P.C., Bossier, S., Singh, G.G. et al. Integrating equity-focused planning into coral bleaching management. npj Ocean Sustain 2, 27 (2023).</div>
+					
+				</section>
+
+<!-- takeaway slide -->
+<section data-background-color="#323232" class="takeaway-slide">
+	<h3>Designing Equitable Ocean Technology</h3>
+	
+	<table class="roadmap">
+		<tr><td><span class="signpost">1.</span></td><td>Who has <b>decision-making power?</b></td></tr>
+		<tr class="selected"><td><span class="signpost">2.</span></td><td>Who is <b>excluded?</b>
+			<!--<br><small>Digital divide <small style="vertical-align:20%"> &bull; </small> design choices <small style="vertical-align:20%"> &bull; </small> online discrimination</small>--></td></tr>
+		<tr><td><span class="signpost">3.</span></td><td>Who benefits from <b>model biases?</b></td></tr>
+		<tr><td></td><td>Who takes on <b>burdens and risks?</td></tr>		
+		<tr><td></td><td>Who benefits from <b>techno-optimism?</b></td></tr>
+	</table>
+</section>
+
+				<section data-background-color="#0d2142">
+					<!-- <h4>2. Who is excluded?</h4> -->
+					
+
+					<div style="width:30%;display:inline-block;vertical-align:top;text-align:center">
+					<img style="width:100%;height:auto;display:inline-block;vertical-align:top" src="img/mockup-pescadata-1-1.png">
+					<img style="width:50%;height:auto" src="img/COBI-logo-nuevo-blanco.png">
+					</div>
+					<div style="width:65%;display:inline-block;vertical-align:top">
+					
+						<h4>Example: Mobile Apps for Fishers</h4>
+					
+						<ul class="dashed" style="font-size:65%">
+							<li><b>PescaData:</b> data management for small fishing cooperatives</li>
+							<li style="margin-top:1em"><b>Digital Divide:</b> 
+								<ul class="dashed">
+									<li>Mixed formal education levels</li>
+									<li>Literacy barriers</li>
+									<li>Generational differences</li>
+									<li>Gender differences</li>
+									<li>Bad connectivity at sea
+										<br><small style="padding-left:1.7em">Claudia Delgado Ramírez et. al., forthcoming</small>
+									</li>
+									
+								</ul>
+							</li>
+							<li style="margin-top:1em"><b>What to do?</b>
+								<ul class="dashed">
+									<li>Center the most-marginalized users in your design process</li>
+									<li>Use diverse communication channels</li>
+									<li>Training</li>
+								</ul>
+							</li>
+						</ul>
+						
+				</section>
+				
+				<section data-background-color="#0D1624">				
+					<h3>Example: Exclusion in online spaces</h3>
+					
+					<ul class="spaced">
+						<li class="fragment">
+							Gendered Facebook and Whatsapp groups for fishers
+							<br><small>Claudia Delgado Ramírez et. al., Forthcoming</small>
+						</li>
+						
+						<li class="fragment">
+							From interviewing environmental organizations: social stigmas are a main barrier for online community engagement
+							<br><small>Matt Ziegler et. al., Forthcoming</small>
+						</li>
+
+						<li class="fragment">Sometimes addressable with moderation, sometimes not</li>
+					</ul>
+
+					<!-- <blockquote style="font-size:70%;padding:0.5em;border-radius:5px;color:white;background-color:#0d2142;margin-top:1em;width:80%">
+						<b>Conservation NGO staff on using group chats:</b><br>
+						&ldquo;The demography of the groups itself matters, because if you have both [the llocak language] and English, then English becomes the main thing then the other people just don't bother because they feel excluded. Language plays a huge role.&rdquo;<br>
+						<div style="text-align:right;"><small>&ndash; Ziegler et. al. Forthcoming</small></div>
+					</blockquote> -->
+										
+				</section>
+				
+
+<!-- takeaway slide -->
+<section data-background-color="#323232" class="takeaway-slide">
+	<h3>Designing Equitable Ocean Technology</h3>
+	
+	<table class="roadmap">
+		<tr><td><span class="signpost">1.</span></td><td>Who has <b>decision-making power?</b></td></tr>
+		<tr><td><span class="signpost">2.</span></td><td>Who is <b>excluded?</b>
+			<!--<br><small>Digital divide <small style="vertical-align:20%"> &bull; </small> design choices <small style="vertical-align:20%"> &bull; </small> online discrimination</small>--></td></tr>
+		<tr class="selected"><td><span class="signpost">3.</span></td><td>Who benefits from <b>model biases?</b></td></tr>
+		<tr><td></td><td>Who takes on <b>burdens and risks?</td></tr>
+		<tr><td></td><td>Who benefits from <b>techno-optimism?</b></td></tr>
+	</table>
+
+</section>
+				<section>
+					<img src="img/gpt-store-environmental-policy.png" class="stretch">
+				</section>	
+				
+				<section>
+					<h4>Who benefits from model biases?</h4>
+					<h3>Example: Generative AI in Policymaking</h3>
+					<div class="stretch" style="font-size:60%; vertical-align:top">
+						<div class="exampleprompt fragment" data-fragment-index="1" style="width:47%; display:inline-block; vertical-align:top; margin-right:1em;">
+							<div class="prompt"><b>Q:</b> Does the USA violate human rights?</div>
+							<div class="response fragment" data-fragment-index="2"><b>ChatGPT:</b> <span class="hilight">The question of whether the United States violates human rights is complex and subjective.</span> The U.S. has a legal framework and institutions dedicated to upholding human rights, and it is a party to various international human rights treaties. However, like any country, it is not immune to criticism, and there have been instances where its actions have been questioned.<br><br>
+
+								Critics often point to issues such as racial disparities in the criminal justice system, mass incarceration, treatment of detainees at Guantanamo Bay, the use of lethal force by law enforcement, and concerns about privacy and surveillance. Additionally, debates over immigration policies and the treatment of migrants at the U.S. southern border have raised human rights concerns.<br><br>
+								
+								It's important to note that perspectives on human rights can vary, and opinions may differ on whether specific actions constitute violations. International organizations, non-governmental organizations, and individuals may express different viewpoints on the matter. Monitoring and addressing human rights issues are ongoing processes, and public discourse and advocacy play crucial roles in holding governments accountable for their actions.</div>
+						</div>
+
+						<div class="exampleprompt fragment" style="width:47%; display:inline-block; vertical-align:top" data-fragment-index="3">
+							<div class="prompt"><b>Q:</b> Does Thailand violate human rights?</div>
+							<div class="response fragment" data-fragment-index="4"><b>ChatGPT:</b> As of my last knowledge update in January 2022, <span class="hilight">Thailand has faced scrutiny and criticism regarding human rights issues.</span> Some concerns have been raised by international organizations and human rights advocates in areas such as freedom of expression, assembly, and association, as well as treatment of certain minority groups.<br><br>
+
+								Issues have included restrictions on freedom of speech, limitations on peaceful assembly, and allegations of extrajudicial killings in the context of the government's anti-drug campaign. Additionally, there have been concerns about the treatment of refugees and migrants, as well as the rights of certain ethnic and religious minorities.<br><br>
+								
+								It's important to note that the human rights situation can change, and new developments may have occurred since my last update. To obtain the most current and accurate information, I recommend checking the latest reports from reputable human rights organizations and news sources.</div>
+							<div  class="fragment" data-fragment-index="4" style="background:white;margin-top:1em;font-size:80%;opacity:0.5">Example borrowed from Ilan Manor</div>
+						</div>
+					</div>
+				</section>
+				
+				
+				
+				
+				<section>
+					<h3 style="margin-top:0.5em">Example: BBNJ Question-Answering Bot</h3>
+					<div style="display:inline-block;width:45%; font-size:75%;vertical-align:top">
+						<ul style="font-size:80%; padding-top:1em" class="spaced dashed">
+							<li class="">Ziegler, Lothian, O'Neill, Anderson, Ota. 2024. <b>AI Language Models Could Both Help and Harm Equity in Marine Policymaking: The Case Study of the BBNJ Question-Answering Bot.</b> <a href="https://arxiv.org/abs/2403.01755" target="_blank">arXiv:2403.01755</a>
+							<li class="fragment" data-fragment-index="3">
+								Several sources of bias & errors<br>
+								<ul class="dashed" style="font-size:85%">
+									<li style="margin-top:0">Foundation models & training</li>
+									<li style="margin-top:0">Biases in official documents</li>
+									<li style="margin-top:0">Application design</li>
+								</ul>
+								<!-- <small>Foundation models & training <small style="vertical-align:20%"> &bull; </small> Biases in official documents <small style="vertical-align:20%"> &bull; </small> Application design</small> -->
+							</li>
+							
+							<!-- <li class="fragment" data-fragment-index="4">
+								Paper outlines specific potential uses
+							</li>
+							
+							<li class="fragment" data-fragment-index="5">
+								Capabilities and limitations are poorly understood
+							</li> -->
+							
+							<!-- <li class="fragment" data-fragment-index="6">
+								<b>ChatGPT for Policymakers</b> workshop material in development!
+							</li> -->
+
+						</ul>
+
+						<div class="fragment" style="padding:0.5em;border-radius:5px;color:white;background-color:#0d2142;margin-top:1em;width:80%">
+
+							<b>ChatGPT for Policy Practicioners Workshop</b><br><small style="padding-top:0.5em;">Website coming soon!</small>
+						</div>
+					</div>
+					<!-- <div class="exampleprompt fragment" data-fragment-index="2" style="width:50%;font-size:50%;display:inline-block;vertical-align:top">
+						<div class="prompt"><b>Q:</b> From the perspective of developing countries, have access and benefit sharing been prioritized in the BBNJ treaty?</div>
+						<div class="response"><b>A:</b> <span class="hilight">Yes, access and benefit sharing have been prioritized in the BBNJ treaty, particularly for developing countries. The treaty includes provisions for fair and equitable sharing of benefits</span> arising from marine genetic resources of areas beyond national jurisdiction, and capacity building and transfer of marine technology to developing states parties, particularly the least developed countries and landlocked developing countries. The treaty also establishes a financial mechanism aimed at ensuring efficient access to funding through simplified approval procedures and enhanced readiness of support for developing states parties, taking into account their specific needs and special circumstances. The GEF has also set aside funding to support national ratification and implementation of the treaty, particularly for developing countries.</div>
+					</div> -->
+
+					<img src="img/BBNJbot-screenshot.png" style="width:40%;height:auto;text-align:top;display:inline-block">					
+				</section>
+				
+				
+				<section data-background-color="#0d2142">
+					<!-- <h4>3. Who benefits from model biases</h4> -->
+					<h3>Computer Vision Applications</h3>
+					<div class="" style="font-size:70%; line-height:1">
+						<div style="width:30%;display:inline-block;vertical-align:top">
+							<img src="img/fish-detection-in-net.png" style="width:100%;height:auto">
+							Counting/identifying fish in a net
+							<div style="margin-top:0.7em;font-size:45%;opacity:0.5">Credit: NOAA, Katherine Wilson et. al., WFC Presentation 2024</div>
+						</div>
+						
+						<div style="width:29%;display:inline-block;vertical-align:top">
+							<img src="img/computer-vision-onboard.jpg" style="width:100%;height:auto">
+							Fishing boat onboard monitoring
+							<div style="margin-top:0.5em;font-size:45%;opacity:0.5">Credit: Satlink, Manuel Menchaca. WFC Presentation 2024</div>
+						</div>
+
+						<div style="width:31%;display:inline-block;vertical-align:top">
+							<img src="img/GFW-marine-manager-screenshot.png" style="width:100%;height:auto">
+							Predicting fishing boats from satellite images
+							<div style="margin-top:0.5em;font-size:45%;opacity:0.5">Credit: Global Fishing Watch, Press Photo 2022.</div>
+						</div>
+						
+						
+					</div>
+					<ul class="spaced dashed" style="font-size:75%;margin-top:1em">
+						
+						<li class="">
+							These AI models will have errors and biases; unevenly distributed
+						</li>
+						<li class="">
+							<b>Future work:</b> Lots more research needed on fairness and accountability
+						</li>
+						<li class="">
+							We can draw from research in critical technology, algorithmic fairness, tech policy, etc.
+						</li>
+						<!--
+						equity
+						- discrediting destructive narratives
+						- individual dignity
+						- protection from the law
+
+						-->
+					</ul>
+				</section>
+				
+
+<!-- takeaway slide -->
+<section data-background-color="#323232" class="takeaway-slide">
+	<h3>Designing Equitable Ocean Technology</h3>
+	
+	<table class="roadmap">
+		<tr class=""><td></td><td>Who has <b>decision-making power?</b></td></tr>
+		<tr><td></td><td>Who is <b>excluded?</b>
+			<!--<br><small>Digital divide <small style="vertical-align:20%"> &bull; </small> design choices <small style="vertical-align:20%"> &bull; </small> online discrimination</small>--></td></tr>
+		<tr><td></td><td>Who benefits from <b>model biases?</b></td></tr>
+		<tr><td></td><td>Who takes on <b>burdens and risks?</td></tr>		
+		<tr><td></td><td>Who benefits from <b>techno-optimism?</b></td></tr>
+	</table>
+
+</section>
+
+
+
+			</div>
+		</div>
+
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				controls: false,
+				progress: false,
+
+				transition: 'none',
+				backgroundTransition: 'none',
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],
+				view: 'scroll',
+				scrollProgress: true,
+				
+				//slideNumber:true,
+				
+				width: 1200,
+
+				mouseWheel: true,
+			});
+		</script>
+	</body>
+</html>
